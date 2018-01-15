@@ -4,13 +4,18 @@ notifications:
 before_script:
   - npm prune
 
-deploy:
-  provider: script
-  script: npm run semantic-release
-  skip_cleanup: true
-  on:
-    branch: master
+# Define the default stage
+stage: 📋 Test
 
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+jobs:
+  include:
+    # Publish step
+    # Only runs on master branch and only once
+    - stage: 🚀 Publish
+      script: npm run semantic-release
+      if: branch = master AND type != pull_request
+
+# Define the order of stages
+stages:
+  - 📋 Test
+  - 🚀 Publish
