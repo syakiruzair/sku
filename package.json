@@ -13,7 +13,7 @@
     "precommit": "lint-staged",
     "commit": "git-cz",
     "commitmsg": "commitlint --edit --extends seek",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release"
   },
   "lint-staged": {
     "{bin,config,scripts}/**/*.js": [
